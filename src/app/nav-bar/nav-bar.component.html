@@ -1,0 +1,31 @@
+<div class="navbar-wrapper">
+  <nav class="navbar">
+    <div class="navbar-left">
+      <div class="brand">MyAdmin</div>
+
+      <ul class="menu">
+        <li><a routerLink="/Home" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="/employee" routerLinkActive="active">Employee</a></li>
+
+        <li class="dropdown">
+          <span class="dropdown-title">Customers</span>
+          <ul class="submenu">
+            <li><a routerLink="/addCustomer">Add Customer</a></li>
+            <li><a routerLink="/customer">Customers</a></li>
+            <li><a routerLink="/add-quotation">Add Quotation</a></li>
+            <li><a routerLink="/quotes">Quotes</a></li>
+            <li><a routerLink="/add-work-order">Add Work Order</a></li>
+            <li><a routerLink="/work-order">Work Order</a></li>
+          </ul>
+        </li>
+
+        <li><a routerLink="/reports">Reports</a></li>
+      </ul>
+    </div>
+
+    <div class="navbar-right">
+      <span class="user-chip">Employee</span>
+      <button class="admin-btn">Admin</button>
+    </div>
+  </nav>
+</div>

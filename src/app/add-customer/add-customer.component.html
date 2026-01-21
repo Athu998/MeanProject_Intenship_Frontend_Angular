@@ -1,0 +1,106 @@
+<div class="page">
+  <div class="form-card">
+    <h2>Add Customer</h2>
+
+    <form [formGroup]="peopleInfo" (ngSubmit)="submitForm()" class="form">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Customer ID <span class="req">*</span></label>
+          <input placeholder="CUS-001" formControlName="id">
+        </div>
+
+        <div class="form-group">
+          <label>Customer Name <span class="req">*</span></label>
+          <input placeholder="Company Name" formControlName="name">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email <span class="req">*</span></label>
+          <input placeholder="email@company.com" formControlName="email">
+        </div>
+
+        <div class="form-group">
+          <label>Contact Person <span class="req">*</span></label>
+          <input placeholder="John Doe" formControlName="contact_person">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Contact No <span class="req">*</span></label>
+          <input placeholder="+91 98765 43210" formControlName="number">
+        </div>
+
+        <div class="form-group">
+          <label>Department <span class="req">*</span></label>
+          <input placeholder="IT / Finance" formControlName="dept">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Address <span class="req">*</span></label>
+        <textarea rows="3" placeholder="Full address" formControlName="address"></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Location <span class="req">*</span></label>
+          <input placeholder="Andheri East" formControlName="location">
+        </div>
+
+        <div class="form-group">
+          <label>City <span class="req">*</span></label>
+          <input formControlName="city">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>State <span class="req">*</span></label>
+          <input formControlName="state">
+        </div>
+
+        <div class="form-group">
+          <label>Country <span class="req">*</span></label>
+          <input formControlName="country">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>State Code <span class="req">*</span></label>
+          <input placeholder="MH" formControlName="state_code">
+        </div>
+
+        <div class="form-group">
+          <label>Status <span class="req">*</span></label>
+          <select formControlName="status">
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>GST No <span class="req">*</span></label>
+          <input formControlName="gstno">
+        </div>
+
+        <div class="form-group">
+          <label>PAN No <span class="req">*</span></label>
+          <input formControlName="panNo">
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn primary">Save Customer</button>
+        <button type="reset" class="btn secondary">Cancel</button>
+      </div>
+
+    </form>
+  </div>
+</div>
