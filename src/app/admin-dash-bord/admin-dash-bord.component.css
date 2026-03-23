@@ -1,0 +1,139 @@
+.table-card{
+
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+
+}
+
+.section-title{
+
+font-size:18px;
+font-weight:600;
+margin-bottom:15px;
+
+}
+
+
+/* FILTER BAR */
+
+.filter-bar{
+
+display:flex;
+gap:10px;
+margin-bottom:15px;
+
+}
+
+.date-input{
+
+padding:6px 10px;
+border-radius:6px;
+border:1px solid #ccc;
+
+}
+
+.today-btn{
+
+background:#10b981;
+color:white;
+border:none;
+padding:6px 14px;
+border-radius:6px;
+cursor:pointer;
+
+}
+
+
+/* TABLE */
+
+.erp-table{
+
+width:100%;
+border-collapse:collapse;
+
+}
+
+.erp-table th{
+
+background:#f3f4f6;
+padding:10px;
+text-align:left;
+
+}
+
+.erp-table td{
+
+padding:10px;
+border-bottom:1px solid #e5e7eb;
+
+}
+
+
+/* STATUS */
+
+.status-badge{
+
+padding:4px 10px;
+border-radius:20px;
+font-size:12px;
+
+}
+
+.pending{
+
+background:#fee2e2;
+color:#b91c1c;
+
+}
+
+.approved{
+
+background:#dcfce7;
+color:#15803d;
+
+}
+
+
+/* BUTTONS */
+
+.give-btn{
+
+background:#2563eb;
+color:white;
+border:none;
+padding:6px 14px;
+border-radius:6px;
+cursor:pointer;
+
+}
+
+.give-btn:hover{
+
+background:#1d4ed8;
+
+}
+
+
+.granted-btn{
+
+background:#dc2626;
+color:white;
+border:none;
+padding:6px 14px;
+border-radius:6px;
+cursor:not-allowed;
+
+}
+
+
+/* EMPTY STATE */
+
+.empty-state{
+
+text-align:center;
+padding:20px;
+color:#6b7280;
+
+}

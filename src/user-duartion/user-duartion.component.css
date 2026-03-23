@@ -1,0 +1,230 @@
+/* ===== PAGE LAYOUT ===== */
+
+.page-container {
+  padding: 30px;
+  background: #f4f6f9;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+/* ===== TITLES ===== */
+
+.page-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title::before {
+  content: "📊";
+  font-size: 20px;
+}
+
+
+/* ===== CARD CONTAINER ===== */
+
+.table-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  margin-bottom: 30px;
+  transition: 0.3s ease;
+}
+
+.table-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ===== FILTER BAR ===== */
+
+.filter-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+
+/* ===== DATE FILTER ===== */
+
+.date-filter {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.date-filter:hover {
+  border-color: #2563eb;
+}
+
+.date-filter:focus {
+  outline: none;
+  border-color: #2563eb;
+  background: white;
+}
+
+
+/* ===== TODAY BUTTON ===== */
+
+.today-btn {
+  padding: 10px 16px;
+  background: #2563eb;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.today-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+
+/* ===== TABLE ===== */
+
+.erp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+
+/* ===== TABLE HEADER ===== */
+
+.erp-table thead {
+  background: #e2e8f0;
+}
+
+.erp-table th {
+  padding: 14px;
+  text-align: left;
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 14px;
+}
+
+
+/* ===== TABLE BODY ===== */
+
+.erp-table td {
+  padding: 14px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #475569;
+}
+
+
+/* ===== ROW HOVER EFFECT ===== */
+
+.erp-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.erp-table tbody tr:hover {
+  background-color: #f8fafc;
+  transform: scale(1.01);
+}
+
+
+/* ===== USERNAME STYLE ===== */
+
+.erp-table td:nth-child(3) {
+  color: #2563eb;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+
+/* ===== WORK MINUTES ===== */
+
+.work-time {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+
+/* ===== BREAK MINUTES ===== */
+
+.break-time {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+
+/* ===== NET WORK ===== */
+
+.net-positive {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.net-negative {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+
+/* ===== STATUS TAG ===== */
+
+.status-active {
+  background: #e0f2fe;
+  color: #0284c7;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-inactive {
+  background: #f1f5f9;
+  color: #64748b;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+
+/* ===== EMPTY STATE ===== */
+
+.empty-state {
+  text-align: center;
+  padding: 25px;
+  color: #94a3b8;
+  font-style: italic;
+  font-size: 14px;
+}
+.today-btn {
+  padding: 8px 14px;
+  margin-left: 10px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.today-btn:hover {
+  background: #1d4ed8;
+}

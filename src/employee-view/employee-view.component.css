@@ -1,0 +1,187 @@
+/* ===== Page ===== */
+.page {
+  padding: 40px;
+  min-height: 100vh;
+  background: #f4f6f9;
+  position: relative;
+}
+
+/* ===== Page Loader ===== */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  z-index: 999;
+}
+
+.spinner {
+  width: 45px;
+  height: 45px;
+  border: 4px solid #e5e7eb;
+  border-top: 4px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== Card ===== */
+.card {
+  max-width: 1100px;
+  margin: auto;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Header ===== */
+.header h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* ===== Search ===== */
+.employee-search-wrapper {
+  margin: 18px 0;
+}
+
+.employee-search-input {
+  width: 280px;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  transition: 0.2s;
+}
+
+.employee-search-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+/* ===== Table ===== */
+.erp-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.erp-table th,
+.erp-table td {
+  padding: 14px 18px;
+  text-align: left;
+}
+
+.erp-table thead {
+  background: #2563eb;
+  color: white;
+}
+
+.erp-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: 0.2s;
+}
+
+.erp-table tbody tr:hover {
+  background: #eef2ff;
+}
+
+.action-cell {
+  text-align: center;
+}
+
+/* ===== Badge ===== */
+.badge {
+  background: #e0e7ff;
+  color: #1d4ed8;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ===== Button ===== */
+.edit-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.edit-btn:hover {
+  background: #1d4ed8;
+}
+
+.erp-btn {
+  background: #2563eb;
+  color: white;
+  padding: 10px 28px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.erp-btn:hover {
+  background: #1d4ed8;
+}
+
+/* ===== Modal ===== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal {
+  background: white;
+  padding: 25px;
+  width: 360px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  animation: modalPop 0.3s ease;
+}
+
+@keyframes modalPop {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal input {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Update Success Animation */
+.update-success {
+  animation: pulse 0.6s ease;
+}
+
+@keyframes pulse {
+  0% { background: #d1fae5; }
+  100% { background: transparent; }
+}

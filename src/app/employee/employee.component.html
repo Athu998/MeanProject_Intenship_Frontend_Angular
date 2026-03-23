@@ -1,1 +1,102 @@
-<p>employee works!</p>
+<div class="container">
+  <h2>Employee Registration</h2>
+
+
+  <form [formGroup]="employeeInfo" (ngSubmit)="submitForm()">
+
+    <div class="row">
+      <div class="field">
+        <label>Employee ID *</label>
+        <input type="number" formControlName="EmpId">
+        <small *ngIf="employeeInfo?.get('EmpId')?.touched && employeeInfo?.get('EmpId')?.invalid">
+
+          Employee ID is required
+        </small>
+      </div>
+
+      <div class="field">
+        <label>Name *</label>
+        <input type="text" formControlName="name">
+        <small *ngIf="employeeInfo.get('name')?.touched && employeeInfo.get('name')?.invalid">
+          Name is required
+        </small>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Enter UserName *</label>
+      <input type="text" formControlName="username">
+      <small *ngIf="employeeInfo.get('username')?.touched && employeeInfo.get('username')?.invalid">
+        UserName is required
+      </small>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Phone Number *</label>
+        <input type="text" formControlName="phone_number">
+        <small *ngIf="employeeInfo.get('phone_number')?.touched && employeeInfo.get('phone_number')?.invalid">
+          Enter valid 10 digit number
+        </small>
+      </div>
+
+      <div class="field">
+        <label>Designation *</label>
+        <input type="text" formControlName="designation">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Department *</label>
+        <select formControlName="department">
+          <option *ngFor="let d of data" [value]="d.name">
+            {{ d.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Initials *</label>
+        <input type="text" formControlName="initials">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field full">
+        <label>Address *</label>
+        <textarea formControlName="address"></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+
+        <label>Password *</label>
+
+        <input type="password" formControlName="password">
+
+        <!-- REQUIRED -->
+        <small *ngIf="employeeInfo.get('password')?.touched && employeeInfo.get('password')?.errors?.['required']">
+          Password is required
+        </small>
+
+
+        <small *ngIf="employeeInfo.get('password')?.touched && employeeInfo.get('password')?.errors?.['pattern']">
+          Must start with Capital, include number & special character
+        </small>
+
+      </div>
+    </div>
+
+
+    <div class="actions">
+      <button type="submit" [disabled]="employeeInfo.invalid">
+        Submit
+      </button>
+      <button type="button" (click)="seeAllEmployee()">
+        See All Employee
+      </button>
+    </div>
+  </form>
+</div>

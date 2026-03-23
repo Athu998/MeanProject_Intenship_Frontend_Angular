@@ -1,106 +1,262 @@
 <div class="page">
+
+  <!-- Loading Overlay -->
+  <div class="loader-overlay" *ngIf="isLoading">
+    <div class="loader"></div>
+  </div>
+
   <div class="form-card">
+
     <h2>Add Customer</h2>
 
-    <form [formGroup]="peopleInfo" (ngSubmit)="submitForm()" class="form">
+    <form [formGroup]="peopleInfo" class="form">
 
-      <div class="form-row">
+      <!-- ================= BASIC INFO ================= -->
+      <div class="grid-4">
+
         <div class="form-group">
           <label>Customer ID <span class="req">*</span></label>
-          <input placeholder="CUS-001" formControlName="id">
+          <input formControlName="id"
+                 [class.invalid]="isInvalid('id')"
+                 placeholder="CUS-001">
+          <small class="error" *ngIf="isInvalid('id')">
+            Customer ID is required
+          </small>
         </div>
 
         <div class="form-group">
           <label>Customer Name <span class="req">*</span></label>
-          <input placeholder="Company Name" formControlName="name">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>Email <span class="req">*</span></label>
-          <input placeholder="email@company.com" formControlName="email">
-        </div>
-
-        <div class="form-group">
-          <label>Contact Person <span class="req">*</span></label>
-          <input placeholder="John Doe" formControlName="contact_person">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>Contact No <span class="req">*</span></label>
-          <input placeholder="+91 98765 43210" formControlName="number">
-        </div>
-
-        <div class="form-group">
-          <label>Department <span class="req">*</span></label>
-          <input placeholder="IT / Finance" formControlName="dept">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Address <span class="req">*</span></label>
-        <textarea rows="3" placeholder="Full address" formControlName="address"></textarea>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>Location <span class="req">*</span></label>
-          <input placeholder="Andheri East" formControlName="location">
-        </div>
-
-        <div class="form-group">
-          <label>City <span class="req">*</span></label>
-          <input formControlName="city">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>State <span class="req">*</span></label>
-          <input formControlName="state">
-        </div>
-
-        <div class="form-group">
-          <label>Country <span class="req">*</span></label>
-          <input formControlName="country">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label>State Code <span class="req">*</span></label>
-          <input placeholder="MH" formControlName="state_code">
+          <input formControlName="name"
+                 [class.invalid]="isInvalid('name')"
+                 placeholder="Company Name">
+          <small class="error" *ngIf="isInvalid('name')">
+            Minimum 3 characters required
+          </small>
         </div>
 
         <div class="form-group">
           <label>Status <span class="req">*</span></label>
-          <select formControlName="status">
-            <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
+          <select formControlName="status"
+                  [class.invalid]="isInvalid('status')">
+            <option value="">Select Status</option>
+            <option>Active</option>
+            <option>Inactive</option>
           </select>
+          <small class="error" *ngIf="isInvalid('status')">
+            Status is required
+          </small>
         </div>
+
       </div>
 
-      <div class="form-row">
+      <!-- ================= CONTACT ================= -->
+      <div class="grid-4">
+
         <div class="form-group">
-          <label>GST No <span class="req">*</span></label>
-          <input formControlName="gstno">
+          <label>Email <span class="req">*</span></label>
+          <input formControlName="email"
+                 [class.invalid]="isInvalid('email')">
+          <small class="error" *ngIf="isInvalid('email')">
+            Enter valid email address
+          </small>
         </div>
 
         <div class="form-group">
-          <label>PAN No <span class="req">*</span></label>
-          <input formControlName="panNo">
+          <label>Contact Person <span class="req">*</span></label>
+          <input formControlName="contact_person"
+                 [class.invalid]="isInvalid('contact_person')">
+          <small class="error" *ngIf="isInvalid('contact_person')">
+            Minimum 3 characters required
+          </small>
         </div>
+
+        <div class="form-group">
+          <label>Contact No <span class="req">*</span></label>
+          <input formControlName="number"
+                 [class.invalid]="isInvalid('number')">
+          <small class="error" *ngIf="isInvalid('number')">
+            Enter valid 10-digit mobile number
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label>Department <span class="req">*</span></label>
+          <select formControlName="dept"
+                  [class.invalid]="isInvalid('dept')">
+            <option value="">Select Department</option>
+            <option *ngFor="let d of departments" [value]="d.dept_name">
+              {{ d.dept_name }}
+            </option>
+          </select>
+          <small class="error" *ngIf="isInvalid('dept')">
+            Department is required
+          </small>
+        </div>
+
       </div>
 
+      <!-- ================= ADDRESS ================= -->
+      <div class="form-group full">
+        <label>Address <span class="req">*</span></label>
+        <textarea formControlName="address"
+                  [class.invalid]="isInvalid('address')"></textarea>
+        <small class="error" *ngIf="isInvalid('address')">
+          Address is required
+        </small>
+      </div>
+
+      <!-- ================= GST ================= -->
+      <div class="grid-2">
+
+        <div class="form-group">
+          <label>GST Number <span class="req">*</span></label>
+          <input formControlName="gstno"
+                 [class.invalid]="isInvalid('gstno')"
+                 placeholder="27ABCDE1234F1Z5">
+          <small class="error" *ngIf="isInvalid('gstno')">
+            Enter valid GST number
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label>PAN Number <span class="req">*</span></label>
+          <input formControlName="panNo"
+                 [class.invalid]="isInvalid('panNo')"
+                 readonly>
+          <small class="error" *ngIf="isInvalid('panNo')">
+            PAN will auto-fill from GST
+          </small>
+        </div>
+
+      </div>
+
+      <small class="error" *ngIf="isStateLoading">
+        Fetching state...
+      </small>
+
+      <!-- ================= LOCATION ================= -->
+      <div class="grid-4">
+
+        <div class="form-group">
+          <label>Location <span class="req">*</span></label>
+          <input formControlName="location"
+                 [class.invalid]="isInvalid('location')">
+          <small class="error" *ngIf="isInvalid('location')">
+            Location is required
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label>City <span class="req">*</span></label>
+          <input formControlName="city"
+                 [class.invalid]="isInvalid('city')">
+          <small class="error" *ngIf="isInvalid('city')">
+            City is required
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label>State</label>
+          <input formControlName="state" readonly>
+        </div>
+
+        <div class="form-group">
+          <label>State Code</label>
+          <input formControlName="state_code" readonly>
+        </div>
+
+        <div class="form-group">
+          <label>Country <span class="req">*</span></label>
+          <input formControlName="country"
+                 [class.invalid]="isInvalid('country')">
+          <small class="error" *ngIf="isInvalid('country')">
+            Country is required
+          </small>
+        </div>
+
+      </div>
+
+      <!-- ================= ACTION BUTTON ================= -->
       <div class="form-actions">
-        <button class="btn primary">Save Customer</button>
-        <button type="reset" class="btn secondary">Cancel</button>
+        <button type="button"
+                class="btn secondary"
+                (click)="addToPreview()">
+          Add to Preview
+        </button>
+
+        <button type="reset"
+                class="btn secondary">
+          Cancel
+        </button>
       </div>
 
     </form>
+
+    <!-- ================= PREVIEW SECTION ================= -->
+
+    <div class="preview-section" *ngIf="previewArray.length > 0">
+
+      <div class="preview-header">
+        <h3>Customer Preview ({{ previewArray.length }})</h3>
+      </div>
+
+      <div class="table-container">
+
+        <table class="preview-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Contact Person</th>
+              <th>Phone</th>
+              <th>Dept</th>
+              <th>Address</th>
+              <th>Location</th>
+              <th>City</th>
+              <th>State</th>
+              <th>State Code</th>
+              <th>Country</th>
+              <th>GST</th>
+              <th>PAN</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let customer of previewArray; let i = index">
+              <td>{{ customer.id }}</td>
+              <td>{{ customer.name }}</td>
+              <td>{{ customer.email }}</td>
+              <td>{{ customer.contact_person }}</td>
+              <td>{{ customer.number }}</td>
+              <td>{{ customer.dept }}</td>
+              <td>{{ customer.address }}</td>
+              <td>{{ customer.location }}</td>
+              <td>{{ customer.city }}</td>
+              <td>{{ customer.state }}</td>
+              <td>{{ customer.state_code }}</td>
+              <td>{{ customer.country }}</td>
+              <td>{{ customer.gstno }}</td>
+              <td>{{ customer.panNo }}</td>
+              <td>{{ customer.status }}</td>
+              <td>
+                <button class="edit-btn" (click)="editRow(i)">✏️</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class="preview-actions">
+        <button class="btn primary" (click)="submitAll()">
+          Submit All Records
+        </button>
+      </div>
+
+    </div>
+
   </div>
 </div>

@@ -1,0 +1,166 @@
+<div class="page">
+
+  <!-- 🔥 Page Loader -->
+  <div class="page-loader" *ngIf="isPageLoading">
+    <div class="spinner"></div>
+    <p>Loading Employees... 👨‍💼</p>
+  </div>
+
+  <div class="card" *ngIf="!isPageLoading">
+
+    <!-- Header -->
+    <div class="header">
+      <h2>All Employees 👨‍💼</h2>
+    </div>
+<!-- Filter Date  -->
+
+    <!-- Search -->
+    <div class="employee-search-wrapper">
+      <input
+        type="text"
+        placeholder="Search employees... 🔍"
+        [(ngModel)]="searchText"
+        (input)="filterEmployees()"
+        class="employee-search-input"
+      />
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrapper">
+      <table class="erp-table">
+
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone 📞</th>
+            <th>Department 🏢</th>
+            <th>Action ⚙️</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let emp of filterdUserData">
+            <td>{{ emp.EmpId }}</td>
+            <td class="name">{{ emp.name }}</td>
+            <td>{{ emp.phone_number }}</td>
+            <td>
+              <span class="badge">{{ emp.department }}</span>
+            </td>
+            <td class="action-cell">
+              <button class="edit-btn" (click)="editEmployee(emp)">
+                ✏️ Edit
+              </button>
+            </td>
+          </tr>
+
+          <tr *ngIf="filterdUserData.length === 0">
+            <td colspan="5" class="no-data">
+              No employees found 😔
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+    <!-- ===== EDIT MODAL ===== -->
+   <!-- ===== EDIT MODAL ===== -->
+<div class="modal-backdrop" *ngIf="selectedEmployee">
+
+  <div class="modal">
+
+    <h3>Edit Employee ✏️</h3>
+
+    <form #empForm="ngForm" (ngSubmit)="updateEmployee(empForm)">
+
+      <!-- NAME -->
+      <div class="form-group">
+        <input
+          type="text"
+          name="name"
+          [(ngModel)]="selectedEmployee.name"
+          placeholder="Name 👤"
+          required
+          minlength="3"
+          #name="ngModel"
+        />
+
+        <small *ngIf="name.invalid && name.touched">
+          Name is required (min 3 characters)
+        </small>
+      </div>
+
+      <!-- PHONE -->
+      <div class="form-group">
+        <input
+          type="text"
+          name="phone_number"
+          [(ngModel)]="selectedEmployee.phone_number"
+          placeholder="Phone 📞"
+          required
+          pattern="^[0-9]{10}$"
+          #phone="ngModel"
+        />
+
+        <small *ngIf="phone.errors?.['required'] && phone.touched">
+          Phone number is required
+        </small>
+
+        <small *ngIf="phone.errors?.['pattern'] && phone.touched">
+          Enter valid 10-digit number
+        </small>
+      </div>
+
+      <!-- DEPARTMENT -->
+      <div class="form-group">
+        <input
+          type="text"
+          name="department"
+          [(ngModel)]="selectedEmployee.department"
+          placeholder="Department 🏢"
+          required
+          #dept="ngModel"
+        />
+
+        <small *ngIf="dept.invalid && dept.touched">
+          Department is required
+        </small>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="modal-actions">
+
+        <button
+          type="submit"
+          class="update-btn"
+          [disabled]="empForm.invalid || isUpdating"
+        >
+          <span *ngIf="!isUpdating">✅ Update</span>
+          <span *ngIf="isUpdating">Updating... ⏳</span>
+        </button>
+
+        <button
+          type="button"
+          class="cancel-btn"
+          (click)="selectedEmployee = null"
+        >
+          ❌ Cancel
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+    <!-- Go Back -->
+    <div class="actions">
+      <button type="button" class="erp-btn" (click)="goBack()">
+        ⬅️ Go Back
+      </button>
+    </div>
+
+  </div>
+</div>

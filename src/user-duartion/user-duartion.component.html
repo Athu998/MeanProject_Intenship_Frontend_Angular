@@ -1,0 +1,69 @@
+<div class="table-card">
+  <h3 class="section-title">Daily Attendance Summary</h3>
+
+  <table class="erp-table">
+     <div class="employee-search-wrapper">
+
+  <input
+    type="date"
+    [(ngModel)]="selectedDate"
+    (change)="getDailySummary()"
+    class="employee-search-input"
+  />
+
+</div>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Employee ID</th>
+        <th>Username</th>
+        <th>First Login</th>
+        <th>Last Logout</th>
+        <th>Work (Hrs)</th>
+        <th>Break (Hrs)</th>
+        <th>Net Work (Hrs)</th>
+        <!-- <th>Status</th> -->
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let user of dailySummaryData">
+
+        <!-- Date -->
+        <td>
+          {{ user.login_date | date:'EEEE' }}
+          <br />
+          <small>{{ user.login_date | date:'mediumDate' }}</small>
+        </td>
+
+        <!-- Employee Info -->
+        <td>{{ user.EmpId }}</td>
+        <td>{{ user.username }}</td>
+
+        <!-- First Login -->
+        <td>
+          {{ user.first_login ? (user.first_login | date:'shortTime') : '—' }}
+        </td>
+
+        <!-- Last Logout -->
+        <td>
+          {{ user.last_logout ? (user.last_logout | date:'shortTime') : '—' }}
+        </td>
+
+        <!-- Work Minutes -->
+        <td>{{ convertMinutes(user.total_work_minutes) }}</td>
+
+<td>{{ convertMinutes(user.total_break_minutes || 0) }}</td>
+
+<td>
+  {{ convertMinutes((user.total_work_minutes || 0) - (user.total_break_minutes || 0)) }}
+</td>
+      <tr *ngIf="dailySummaryData.length === 0">
+        <td colspan="9" class="empty-state">
+          No Attendance Records Found
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

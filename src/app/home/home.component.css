@@ -1,68 +1,199 @@
+/* ===================================
+   LOADER (Skeleton)
+=================================== */
+.loader-page {
+  padding: 60px;
+  animation: fadeIn 0.3s ease;
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #e5e7eb 25%,
+    #f3f4f6 37%,
+    #e5e7eb 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.3s infinite;
+  border-radius: 10px;
+}
+
+.skeleton.title {
+  height: 32px;
+  width: 280px;
+  margin-bottom: 30px;
+}
+
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.skeleton.card {
+  height: 90px;
+}
+
+/* shimmer effect */
+@keyframes shimmer {
+  0% { background-position: 100% 0 }
+  100% { background-position: 0 0 }
+}
+
+
+/* ===================================
+   MAIN PAGE
+=================================== */
 .home-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
-  padding: 40px;
+  gap: 60px;
+  padding: 50px;
+  min-height: calc(100vh - 60px);
+
+  background: linear-gradient(135deg, #eef2f7, #f8fafc);
+  font-family: "Inter", sans-serif;
 }
 
+
+/* LEFT */
 .home-left {
-  max-width: 520px;
+  max-width: 540px;
 }
 
 .home-left h1 {
-  font-size: 34px;
+  font-size: 32px;
+  font-weight: 600;
   color: #0f172a;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .tagline {
   font-size: 15px;
   color: #475569;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
   line-height: 1.6;
 }
 
-.features {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 24px;
+
+/* ===================================
+   STATS CARDS
+=================================== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
 }
 
-.features li {
-  margin-bottom: 8px;
-  color: #1e293b;
-  font-size: 14px;
+.stat-card {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  text-align: center;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  transition: 0.25s ease;
 }
 
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+
+.stat-card h3 {
+  font-size: 20px;
+  color: #2563eb;
+}
+
+.stat-card p {
+  font-size: 13px;
+  color: #64748b;
+}
+
+
+/* ===================================
+   BUTTONS
+=================================== */
 .home-actions {
   display: flex;
   gap: 14px;
+  margin-bottom: 24px;
 }
 
-.home-actions button {
-  padding: 10px 18px;
-  border-radius: 6px;
+.erp-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
   border: none;
-  background: #2563eb;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
   color: white;
+  font-weight: 500;
   cursor: pointer;
-  font-size: 14px;
+  transition: 0.25s ease;
 }
 
-.home-actions button.outline {
+.erp-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37,99,235,0.3);
+}
+
+.erp-btn.outline {
   background: transparent;
   border: 1px solid #2563eb;
   color: #2563eb;
 }
 
-.home-actions button:hover {
-  opacity: 0.9;
+
+/* ===================================
+   INFO BOX
+=================================== */
+.info-box {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 12px;
+  font-size: 13px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.06);
 }
 
+.info-box h4 {
+  margin-bottom: 10px;
+}
+
+.info-box ul {
+  padding-left: 16px;
+}
+
+
+/* ===================================
+   IMAGE
+=================================== */
 .home-right img {
-  width: 460px;
+  width: 480px;
   max-width: 100%;
-  border-radius: 14px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border-radius: 16px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+}
+
+
+/* ===================================
+   ANIMATIONS
+=================================== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+@media (max-width: 900px) {
+  .home-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
 }

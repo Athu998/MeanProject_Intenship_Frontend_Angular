@@ -1,29 +1,81 @@
-<div class="home-wrapper">
+<!-- ================= LOADER ================= -->
+<div *ngIf="loading" class="loader-page">
 
-  <div class="home-left">
-    <h1>Admin Dashboard</h1>
-    <p class="tagline">
-      A clean and scalable admin panel built with Angular,
-      focused on real-world business workflows.
-    </p>
+  <div class="skeleton title"></div>
 
-    <ul class="features">
-      <li>✔ Customer Management</li>
-      <li>✔ Quotations & Work Orders</li>
-      <li>✔ Role-based Navigation</li>
-      <li>✔ Reactive Forms & Validations</li>
-    </ul>
-
-    <div class="home-actions">
-      <button>Add Customer</button>
-      <button class="outline">View Reports</button>
-    </div>
+  <div class="skeleton-grid">
+    <div class="skeleton card" *ngFor="let i of [1,2,3,4]"></div>
   </div>
 
+</div>
+
+
+<!-- ================= REAL CONTENT ================= -->
+<div *ngIf="!loading" class="home-wrapper">
+
+  <!-- LEFT -->
+  <div class="home-left">
+
+    <h1 *ngIf="isLog">Welcome Back 👋 {{ username }}</h1>
+
+    <p class="tagline">
+      Manage your business operations efficiently using this ERP dashboard.
+      Track employees, customers, quotations and reports in one place.
+    </p>
+
+
+    <!-- STATS -->
+    <div class="stats">
+
+      <div class="stat-card">
+        <h3>120+</h3>
+        <p>Employees</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>340+</h3>
+        <p>Customers</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>85</h3>
+        <p>Orders</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>₹2.4L</h3>
+        <p>Revenue</p>
+      </div>
+
+    </div>
+
+
+    <!-- QUICK ACTIONS -->
+    <div class="home-actions">
+      <button class="erp-btn" routerLink="/employee">Manage Employees</button>
+      <button class="erp-btn outline" routerLink="/addCustomer">Add Customer</button>
+    </div>
+
+
+    <!-- INFO SECTION -->
+    <div class="info-box">
+      <h4>📌 System Information</h4>
+      <ul>
+        <li>✔ Angular + Node.js backend</li>
+        <li>✔ Secure login & role-based access</li>
+        <li>✔ Real-time employee & customer tracking</li>
+        <li>✔ Scalable for enterprise use</li>
+      </ul>
+    </div>
+
+  </div>
+
+
+  <!-- RIGHT -->
   <div class="home-right">
     <img
       src="https://images.unsplash.com/photo-1551288049-bebda4e38f71"
-      alt="Dashboard Illustration"
+      alt="Dashboard"
     />
   </div>
 

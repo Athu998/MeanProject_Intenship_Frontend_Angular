@@ -1,85 +1,306 @@
-.page {
-  background: #f5f5f5;
-  padding: 40px;
+/* ===============================
+   GLOBAL RESET
+================================ */
+* {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  box-sizing: border-box;
 }
 
+/* ===============================
+   PAGE
+================================ */
+.page {
+  background: linear-gradient(180deg,#f8fafc,#f1f5f9);
+  padding: 60px;
+  min-height: 100vh;
+}
+
+/* ===============================
+   CARD
+================================ */
 .form-card {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: auto;
   background: #fff;
-  padding: 32px;
+  padding: 40px;
   border-radius: 18px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.08);
 }
 
-.form-card h2 {
+/* ===============================
+   TITLE
+================================ */
+h2 {
+  margin-bottom: 30px;
   font-size: 22px;
   font-weight: 600;
-  margin-bottom: 20px;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+/* ===============================
+   GRID SYSTEM
+================================ */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-bottom: 22px;
 }
 
-.form-row {
-  display: flex;
-  gap: 16px;
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-bottom: 22px;
 }
 
+.full {
+  margin-bottom: 22px;
+}
+
+/* ===============================
+   FORM GROUP
+================================ */
 .form-group {
-  flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 6px;
 }
 
 label {
-  font-size: 12px;
-  color: #555;
-  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
 }
 
+/* ===============================
+   INPUTS
+================================ */
 input,
-textarea {
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid #ddd;
+textarea,
+select {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #dbeafe;
+  background: #fbfdff;
   font-size: 14px;
+  transition: 0.2s ease;
+}
+
+textarea {
+  min-height: 100px;
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+  background: #fff;
   outline: none;
-  border-color: #000;
 }
 
-/* Buttons */
+/* ===============================
+   BUTTONS
+================================ */
 .form-actions {
   display: flex;
+  justify-content: flex-end;
   gap: 14px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .btn {
   padding: 12px 28px;
-  border-radius: 20px;
-  font-size: 14px;
-  border: none;
+  border-radius: 999px;
   cursor: pointer;
+  border: none;
+  font-weight: 500;
+  transition: 0.2s ease;
 }
 
 .btn.primary {
-  background: #000;
+  background: linear-gradient(135deg,#1e3a8a,#2563eb);
   color: #fff;
 }
 
-.btn.secondary {
-  background: #e5e5e5;
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37,99,235,0.25);
 }
+
+.btn.secondary {
+  background: #e5e7eb;
+}
+
+.btn.secondary:hover {
+  background: #d1d5db;
+}
+
+/* ===============================
+   REQUIRED STAR
+================================ */
 .req {
   color: #dc2626;
-  margin-left: 3px;
+}
+
+/* ===============================
+   LOADER
+================================ */
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.loader {
+  width: 45px;
+  height: 45px;
+  border: 4px solid #dbeafe;
+  border-top: 4px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===============================
+   STATE LOADING SPINNER
+================================ */
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #ccc;
+  border-top: 2px solid #3f51b5;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+  margin-left: 6px;
+}
+
+/* ===============================
+   PREVIEW SECTION
+================================ */
+.preview-section {
+  margin-top: 40px;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+.preview-header {
+  padding: 18px 24px;
+  background: linear-gradient(135deg,#1e3a8a,#2563eb);
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.preview-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1400px;
+}
+
+/* TABLE HEADER */
+.preview-table thead {
+  background: linear-gradient(135deg,#312e81,#4f46e5);
+  color: #ffffff;
+}
+
+.preview-table th {
+  padding: 14px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* TABLE BODY */
+.preview-table td {
+  padding: 14px 16px;
+  font-size: 13px;
+  border-bottom: 1px solid #eef2f7;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.preview-table tbody tr:hover {
+  background: #f3f4ff;
+  transition: 0.2s ease;
+}
+
+.preview-table tbody tr:nth-child(even) {
+  background: #fafbff;
+}
+
+.preview-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ACTION COLUMN */
+.preview-table td:last-child {
+  text-align: center;
+}
+
+/* Edit Button */
+.edit-btn {
+  background: #eef2ff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.edit-btn:hover {
+  background: #dbeafe;
+}
+
+/* Submit Area */
+.preview-actions {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  background: #f8fafc;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media(max-width:1000px){
+  .grid-4 { grid-template-columns: repeat(2,1fr); }
+}
+
+@media(max-width:600px){
+  .grid-4,
+  .grid-2 { grid-template-columns: 1fr; }
+  .page { padding: 20px; }
+}
+input.invalid,
+select.invalid,
+textarea.invalid {
+  border: 1.5px solid #e53935 !important;
+  background: #fff5f5;
+}
+
+.error {
+  color: #e53935;
   font-size: 12px;
+  margin-top: 4px;
+  display: block;
 }

@@ -1,0 +1,102 @@
+<div class="table-card">
+
+<h3 class="section-title">
+Break Login Override
+</h3>
+
+<!-- Filter Section -->
+
+<div class="filter-bar">
+
+<input
+type="date"
+[(ngModel)]="selectedDate"
+(change)="filterByDate()"
+class="date-input"
+/>
+
+<button class="today-btn" (click)="setToday()">
+📅 Today
+</button>
+
+</div>
+
+
+<table class="erp-table">
+
+<thead>
+
+<tr>
+
+<th>Employee ID</th>
+<th>Username</th>
+<th>Break Minutes</th>
+<th>Status</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+<tr *ngFor="let user of users">
+
+<td class="emp-id">
+{{user.employee_id}}
+</td>
+
+<td class="username">
+👤 {{user.username}}
+</td>
+
+<td class="break-time">
+⏱ {{user.break_minutes}} min
+</td>
+
+
+<td>
+
+<span
+class="status-badge"
+[ngClass]="user.admin_override == 1 ? 'approved' : 'pending'">
+
+{{ user.admin_override == 1 ? 'Approved' : 'Pending Approval' }}
+
+</span>
+
+</td>
+
+
+<td>
+
+<button
+(click)="allowLogin(user.employee_id)"
+[disabled]="user.admin_override == 1"
+[class.give-btn]="user.admin_override == 0"
+[class.granted-btn]="user.admin_override == 1">
+
+{{ user.admin_override == 1 ? 'Access Already Given' : 'Give Access' }}
+
+</button>
+
+</td>
+</tr>
+
+
+<tr *ngIf="users.length === 0">
+
+<td colspan="5" class="empty-state">
+
+🚫 No Records Found
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
